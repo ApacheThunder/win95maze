@@ -20,3 +20,5 @@ You can blame the original auther for that. I've also reorganized the location o
 I've enabled pages so you can view a live copy of this. It appears to work in latest Firefox at least:
 
 https://ApacheThunder.github.io/win95maze/
+
+You can use arrow keys to control where you go. I've forgotten if there was any other key commands. :P
