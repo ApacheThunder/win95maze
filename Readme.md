@@ -15,3 +15,8 @@ the maze.
 
 I also made changes to the resolution of the rat image so it looks more correct to the original. Don't ask me why the rats hurt you in this minigame.
 You can blame the original auther for that. I've also reorganized the location of the JS files and image assets so it all makes more sense. :P
+
+
+I've enabled pages so you can view a live copy of this. It appears to work in latest Firefox at least:
+
+https://ApacheThunder.github.io/win95maze/
