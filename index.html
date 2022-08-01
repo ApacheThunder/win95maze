@@ -186,19 +186,19 @@ $("#xButton").mouseup(function()
 });
 
 $("#go").click(function()
-{	
-	URL =  "?w="  + $("#w").val()
-                    
-	URL += "&h="  + $("#h").val()
-                    
-	URL += "&wa=" + $("#wall").val()
-                    
-	URL += "&f="  + $("#floor").val()
-                    
-	URL += "&c="  + $("#ceiling").val()
-		
-	URL +=  "?god="  + $("#god").val()
+{
+	URL  =  "?god=" + $("#god").val()
 	
+	URL +=  "&w="  + $("#w").val()
+                    
+	URL +=  "&h="  + $("#h").val()
+                    
+	URL +=  "&wa=" + $("#wall").val()
+                    
+	URL +=  "&f="  + $("#floor").val()
+                    
+	URL +=  "&c="  + $("#ceiling").val()
+		
 	document.location = URL
 });
 
