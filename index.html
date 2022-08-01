@@ -115,10 +115,10 @@ $.ajaxSetup({async:false})
 $.DEBUG = 0;
 $.setup = 0;
 
-var w,h;
+var god,w,h;
+$.getUrlVar('god')  ? h=$.getUrlVar('god') : god=0;
 $.getUrlVar('w')  ? w=$.getUrlVar('w') : w=12;
 $.getUrlVar('h')  ? h=$.getUrlVar('h') : h=12;
-$.getUrlVar('god')  ? h=$.getUrlVar('god') : god=0;
 $.getUrlVar('wa') ? $.wallImage = $.getUrlVar('wa') : $.wallImage = "wall.png";
 $.getUrlVar('c')  ? $.ceilImage =  $.getUrlVar('c') : $.ceilImage = "ceiling.png";
 $.getUrlVar('f')  ? $.floorImage = $.getUrlVar('f') : $.floorImage = "floor.png";
@@ -126,9 +126,9 @@ $.getUrlVar('f')  ? $.floorImage = $.getUrlVar('f') : $.floorImage = "floor.png"
 scene = new THREE.Scene();
 
 //hnng
+$.god=god;
 $.w=w;
 $.h=h;
-$.god=god;
 //r == $.rats
 $.getUrlVar("r") ? $.rats = $.getUrlVar('r') : $.rats = Math.ceil((w*h)/50);
 
@@ -138,9 +138,9 @@ $.autopilot = $.getUrlVar('a');
 $("#wall").load("options_wall.html?f=wall.png");
 $("#floor").load("options_floor.html?f=floor.png");
 $("#ceiling").load("options_ceiling.html?f=ceiling.png");
+$("#god").val(god);
 $("#w").val(w);
 $("#h").val(h);
-$("#god").val(god);
 
 
 $("#optionsButton").mouseover(function()
@@ -186,9 +186,9 @@ $("#xButton").mouseup(function()
 });
 
 $("#go").click(function()
-{
-	URL  =  "?god=" + $("#god").val()
-	
+{	
+	URL =  "?god=" + $("#god").val()
+
 	URL +=  "&w="  + $("#w").val()
                     
 	URL +=  "&h="  + $("#h").val()
@@ -350,7 +350,7 @@ function End(Y,X)
 				{
 					if(!$.ended)
 					{
-						window.location = "./?w="+(parseInt($.w)+1)+"&h="+(parseInt($.h)+1)+"&c="+$.ceilImage+"&f="+$.floorImage+"&wa="+$.wallImage;
+						window.location = "./?god="+(parseInt($.god)+1)+"&w="+(parseInt($.w)+1)+"&h="+(parseInt($.h)+1)+"&c="+$.ceilImage+"&f="+$.floorImage+"&wa="+$.wallImage;
 						$.ended=1;
 					}
 					clearInterval(endInterval);
