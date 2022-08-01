@@ -21,4 +21,8 @@ I've enabled pages so you can view a live copy of this. It appears to work in la
 
 https://ApacheThunder.github.io/win95maze/
 
+Use this URL if you want to play without the rats harming you:
+
+https://apachethunder.github.io/win95maze/?god=1
+
 You can use arrow keys to control where you go. I've forgotten if there was any other key commands. :P
