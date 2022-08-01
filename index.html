@@ -350,7 +350,7 @@ function End(Y,X)
 				{
 					if(!$.ended)
 					{
-						window.location = "./?god="+(parseInt($.god)+1)+"&w="+(parseInt($.w)+1)+"&h="+(parseInt($.h)+1)+"&c="+$.ceilImage+"&f="+$.floorImage+"&wa="+$.wallImage;
+						window.location = "./?god="+parseInt($.god)+"&w="+(parseInt($.w)+1)+"&h="+(parseInt($.h)+1)+"&c="+$.ceilImage+"&f="+$.floorImage+"&wa="+$.wallImage;
 						$.ended=1;
 					}
 					clearInterval(endInterval);
@@ -424,9 +424,9 @@ function Rat(Y,X)
 	this.tick = function()
 	{
 		this.mesh.rotation.y = camera.rotation.y;
-		if(!$.i)
+		if(!$.i && !$.god)
 		{
-			if((difference(this.mesh.position.z,camera.position.z) < 10 && difference(this.mesh.position.x,camera.position.x) < 10) && $.god < 1 && !$.i)
+			if((difference(this.mesh.position.z,camera.position.z) < 10 && difference(this.mesh.position.x,camera.position.x) < 10) && !$.i)
 			{
 				health--;
 				displayHearts(health);
