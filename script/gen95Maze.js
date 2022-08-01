@@ -214,7 +214,7 @@ function windows95Maze(width,height)
 		}
 	}
 	//random lego globe thing wall
-	/*
+	
 	rax = randint(0,width-1);
 	ray = randint(0,height-1);
 	
@@ -233,5 +233,5 @@ function windows95Maze(width,height)
 			this.down=2;
 			break;
 	}
-	*/
+	
 }
