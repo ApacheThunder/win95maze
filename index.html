@@ -83,7 +83,7 @@ canvas
 		(Some of these may not work on the floor/ceiling)
 		<br />
 		Harmless Rats
-		<input id=g type=text> <br />		
+		<input id=god type=text> <br />		
 		Width
 		<input id=w type=text> <br />
 		Height
@@ -118,7 +118,7 @@ $.setup = 0;
 var w,h;
 $.getUrlVar('w')  ? w=$.getUrlVar('w') : w=12;
 $.getUrlVar('h')  ? h=$.getUrlVar('h') : h=12;
-$.getUrlVar('g')  ? h=$.getUrlVar('g') : g=0;
+$.getUrlVar('god')  ? h=$.getUrlVar('god') : god=0;
 $.getUrlVar('wa') ? $.wallImage = $.getUrlVar('wa') : $.wallImage = "wall.png";
 $.getUrlVar('c')  ? $.ceilImage =  $.getUrlVar('c') : $.ceilImage = "ceiling.png";
 $.getUrlVar('f')  ? $.floorImage = $.getUrlVar('f') : $.floorImage = "floor.png";
@@ -128,7 +128,7 @@ scene = new THREE.Scene();
 //hnng
 $.w=w;
 $.h=h;
-$.g=g;
+$.god=god;
 //r == $.rats
 $.getUrlVar("r") ? $.rats = $.getUrlVar('r') : $.rats = Math.ceil((w*h)/50);
 
@@ -138,9 +138,9 @@ $.autopilot = $.getUrlVar('a');
 $("#wall").load("options_wall.html?f=wall.png");
 $("#floor").load("options_floor.html?f=floor.png");
 $("#ceiling").load("options_ceiling.html?f=ceiling.png");
-$("#g").val(g);
 $("#w").val(w);
 $("#h").val(h);
+$("#god").val(god);
 
 
 $("#optionsButton").mouseover(function()
@@ -190,8 +190,6 @@ $("#go").click(function()
 	URL =  "?w="  + $("#w").val()
                     
 	URL += "&h="  + $("#h").val()
-	
-	URL += "?g="  + $("#g").val()
                     
 	URL += "&wa=" + $("#wall").val()
                     
@@ -199,6 +197,8 @@ $("#go").click(function()
                     
 	URL += "&c="  + $("#ceiling").val()
 		
+	URL +=  "?god="  + $("#god").val()
+	
 	document.location = URL
 });
 
@@ -426,7 +426,7 @@ function Rat(Y,X)
 		this.mesh.rotation.y = camera.rotation.y;
 		if(!$.i)
 		{
-			if((difference(this.mesh.position.z,camera.position.z) < 10 && difference(this.mesh.position.x,camera.position.x) < 10) && difference(parseInt($.g)) < 1) && !$.i)
+			if((difference(this.mesh.position.z,camera.position.z) < 10 && difference(this.mesh.position.x,camera.position.x) < 10) && $.god < 1 && !$.i)
 			{
 				health--;
 				displayHearts(health);
