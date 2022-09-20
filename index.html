@@ -82,8 +82,6 @@ canvas
 		<br />
 		(Some of these may not work on the floor/ceiling)
 		<br />
-		Harmless Rats
-		<input id=god type=text> <br />		
 		Width
 		<input id=w type=text> <br />
 		Height
@@ -115,8 +113,7 @@ $.ajaxSetup({async:false})
 $.DEBUG = 0;
 $.setup = 0;
 
-var god,w,h;
-$.getUrlVar('god')  ? h=$.getUrlVar('god') : god=0;
+var w,h;
 $.getUrlVar('w')  ? w=$.getUrlVar('w') : w=12;
 $.getUrlVar('h')  ? h=$.getUrlVar('h') : h=12;
 $.getUrlVar('wa') ? $.wallImage = $.getUrlVar('wa') : $.wallImage = "wall.png";
@@ -126,7 +123,6 @@ $.getUrlVar('f')  ? $.floorImage = $.getUrlVar('f') : $.floorImage = "floor.png"
 scene = new THREE.Scene();
 
 //hnng
-$.god=god;
 $.w=w;
 $.h=h;
 //r == $.rats
@@ -138,10 +134,8 @@ $.autopilot = $.getUrlVar('a');
 $("#wall").load("options_wall.html?f=wall.png");
 $("#floor").load("options_floor.html?f=floor.png");
 $("#ceiling").load("options_ceiling.html?f=ceiling.png");
-$("#god").val(god);
 $("#w").val(w);
 $("#h").val(h);
-
 
 $("#optionsButton").mouseover(function()
 {
@@ -186,18 +180,16 @@ $("#xButton").mouseup(function()
 });
 
 $("#go").click(function()
-{	
-	URL =  "?god=" + $("#god").val()
-
-	URL +=  "&w="  + $("#w").val()
+{
+	URL = "?w="  + $("#w").val()
                     
-	URL +=  "&h="  + $("#h").val()
+	URL += "&h="  + $("#h").val()
                     
-	URL +=  "&wa=" + $("#wall").val()
+	URL += "&wa=" + $("#wall").val()
                     
-	URL +=  "&f="  + $("#floor").val()
+	URL += "&f="  + $("#floor").val()
                     
-	URL +=  "&c="  + $("#ceiling").val()
+	URL += "&c="  + $("#ceiling").val()
 		
 	document.location = URL
 });
@@ -350,7 +342,7 @@ function End(Y,X)
 				{
 					if(!$.ended)
 					{
-						window.location = "./?god="+$.god+"&w="+(parseInt($.w)+1)+"&h="+(parseInt($.h)+1)+"&c="+$.ceilImage+"&f="+$.floorImage+"&wa="+$.wallImage;
+						window.location = "./?w="+(parseInt($.w)+1)+"&h="+(parseInt($.h)+1)+"&c="+$.ceilImage+"&f="+$.floorImage+"&wa="+$.wallImage;
 						$.ended=1;
 					}
 					clearInterval(endInterval);
@@ -424,7 +416,7 @@ function Rat(Y,X)
 	this.tick = function()
 	{
 		this.mesh.rotation.y = camera.rotation.y;
-		if(!$.i && ($.god < 1))
+		if(!$.i)
 		{
 			if((difference(this.mesh.position.z,camera.position.z) < 10 && difference(this.mesh.position.x,camera.position.x) < 10) && !$.i)
 			{
